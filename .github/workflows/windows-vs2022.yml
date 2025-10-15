@@ -1,0 +1,44 @@
+name: Windows (VS2022) build
+
+on:
+  push:
+  pull_request:
+
+env:
+  CMAKE_GENERATOR: "Visual Studio 17 2022"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config: [Debug, Release]
+        arch: [x64]  # add "Win32" if you also need 32-bit
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure (CMake + VS2022)
+        run: >
+          cmake -S . -B build\${{ matrix.arch }}
+          -G "${{ env.CMAKE_GENERATOR }}"
+          -A ${{ matrix.arch }}
+
+      - name: Build
+        run: >
+          cmake --build build\${{ matrix.arch }}
+          --config ${{ matrix.config }} -- /m
+
+      # Optional: run ctest if you add tests later
+      # - name: Test
+      #   run: ctest --test-dir build\${{ matrix.arch }} -C ${{ matrix.config }} --output-on-failure
+
+      - name: Upload executables (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.config }}-${{ matrix.arch }}
+          path: |
+            build\${{ matrix.arch }}\${{ matrix.config }}\**\*.exe
+            build\${{ matrix.arch }}\${{ matrix.config }}\**\*.dll
