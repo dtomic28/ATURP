@@ -40,5 +40,5 @@ jobs:
         with:
           name: ${{ matrix.config }}-${{ matrix.arch }}
           path: |
-            build\${{ matrix.arch }}\${{ matrix.config }}\**\*.exe
-            build\${{ matrix.arch }}\${{ matrix.config }}\**\*.dll
+            build\${{ matrix.arch }}\**\${{ matrix.config }}\**\*.exe
+            build\${{ matrix.arch }}\**\${{ matrix.config }}\**\*.dll
