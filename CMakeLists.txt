@@ -6,3 +6,5 @@ set(GLOBAL_PROJECT_NAME "ATURP")
 project(${GLOBAL_PROJECT_NAME})
 
 add_subdirectory(vaja01)
+add_subdirectory(vaja02)
+
