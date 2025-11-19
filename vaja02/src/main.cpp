@@ -25,9 +25,7 @@ public:
     }
 
     void connect(int m, int s) {
-        //Find main ship of M
         const int rm = findSet(m);
-        //If the mth ship is the head exit fast
         if (rm == s) {
             return;
         }
@@ -69,7 +67,7 @@ void processStream(std::istream& in, std::ostream& out) {
     char op;
     while (in >> op) {
         if (op == 'C') {
-            //Connect m-th node (main ship) with sth node.
+            //Connect m-th node with sth node (s node becomes main ship).
             int m = 0, s = 0;
             in >> m >> s;
             dsu.connect(m, s);
