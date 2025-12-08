@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstdint>
 #include <vector>
+#include <algorithm>
+#include <array>
 
 using namespace std;
 
