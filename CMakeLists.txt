@@ -8,5 +8,5 @@ project(${GLOBAL_PROJECT_NAME})
 add_subdirectory(vaja01)
 add_subdirectory(vaja02)
 add_subdirectory(vaja03)
-
+add_subdirectory(vaja04)
 
