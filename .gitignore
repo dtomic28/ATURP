@@ -44,3 +44,4 @@ bckp
 # cmake
 CMakeUserPresets.json
 CMakeSettings.json
+/seminarska/venv/*

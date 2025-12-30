@@ -9,4 +9,4 @@ add_subdirectory(vaja01)
 add_subdirectory(vaja02)
 add_subdirectory(vaja03)
 add_subdirectory(vaja04)
-
+add_subdirectory(seminarska)
