@@ -4,7 +4,7 @@ set(ASSIGNMENT_NAME "seminarska")
 
 project(${ASSIGNMENT_NAME})
 
-include_directories(${CMAKE_SOURCE_DIR}/${ASSIGNMENT_NAME}/include)
+include_directories(include)
 
 set(SOURCES
         src/main.cpp
@@ -13,15 +13,14 @@ set(SOURCES
 
 add_executable(${ASSIGNMENT_NAME} ${SOURCES})
 
-set(SOURCE_ASSETS_DIR "${CMAKE_SOURCE_DIR}/${ASSIGNMENT_NAME}/data")
+set(SOURCE_ASSETS_DIR "${CMAKE_SOURCE_DIR}/data")
 
-# Path to the destination folder inside the build directory
-set(DEST_ASSETS_DIR "${CMAKE_BINARY_DIR}/${ASSIGNMENT_NAME}")
+set(DEST_ASSETS_DIR "${CMAKE_BINARY_DIR}")
 
-# Add a custom post-build command
 add_custom_command(
         TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${SOURCE_ASSETS_DIR}" "${DEST_ASSETS_DIR}"
         COMMENT "Copying assets to build directory..."
 )
+
